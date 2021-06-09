@@ -34,3 +34,25 @@ a = { b: 1, 10: true, 20: false }
   let bs: readonly number[] = as.concat(4)
   console.log(bs)
 }
+
+function sumVariadic(...numbers: number[]): number {
+  return numbers.reduce((total, n) => total + n, 0)
+}
+
+//console.log(sumVariadic(1, 2, 3, 4))
+
+{
+  let numbers = {
+    *[Symbol.iterator]() {
+      for (let n = 1; n <= 10; n++) {
+        yield n
+      }
+    }
+  }
+
+  let iter = numbers[Symbol.iterator]()
+  console.log(
+    iter.next(),
+    iter.next()
+  )
+}
